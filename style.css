@@ -1,0 +1,10 @@
+#real-numbers, #imag-numbers {
+    display: flex;
+    margin-top: 20px;
+}
+#real-numbers input[type=range], #imag-numbers input[type=range] {
+    transform: rotate(-90deg) translateX(-80px);
+}
+#imag-numbers {
+    margin-top: 200px;
+}
