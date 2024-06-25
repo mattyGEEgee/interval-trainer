@@ -1,10 +1,10 @@
-#real-numbers, #imag-numbers {
+#real-numbers {
     display: flex;
     margin-top: 20px;
 }
-#real-numbers input[type=range], #imag-numbers input[type=range] {
-    transform: rotate(-90deg) translateX(-80px);
-}
-#imag-numbers {
-    margin-top: 200px;
+#real-numbers input[type=range] {
+    /* transform: rotate(-90deg) translateX(-80px); */
+    writing-mode: vertical-lr; 
+    direction: rtl;
+    width: 5ch
 }

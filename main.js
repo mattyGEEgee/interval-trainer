@@ -2,15 +2,15 @@ const onButton = document.querySelector('input#on')
 const offButton = document.querySelector('input#off')
 const pitchSlider = document.querySelector('input#frequency')
 const gainSlider = document.querySelector('input#gain')
-const realAndImagSliders = document.querySelectorAll('#imag-numbers input[type=range], #real-numbers input[type=range]')
+const printButton = document.querySelector('input#print')
+const display = document.querySelector('pre#display')
+const numberOfNumbersInput = document.querySelector('input#number-of-numbers')
 
-// oscillator
-// gain
-
-realAndImagSliders.forEach((i) => {
-    i.addEventListener('input', (e) => {
-        console.log(`${i.id}: ${e.target.value}`);
-    })
+numberOfNumbersInput.addEventListener('input', (e) => {
+    numberOfNumbers = parseInt(e.target.value)
+    makeWavetable()
+    makeRealAndImagSliders()
+    console.log(`numberOfNumbers: ${numberOfNumbers}`);
 })
 
 onButton.addEventListener('click', (e) => {
@@ -18,7 +18,8 @@ onButton.addEventListener('click', (e) => {
 })
 offButton.addEventListener('click', (e) => {
     oscillator.stop()
-    window.location.reload() // NOT FINAL (helper)
+    makeOscillator()
+    // window.location.reload() // NOT FINAL (helper)
 })
 pitchSlider.addEventListener('input', (e) => {
     oscillator.frequency.value = parseInt(e.target.value)
@@ -26,8 +27,5 @@ pitchSlider.addEventListener('input', (e) => {
 })
 gainSlider.addEventListener('input', (e) => {
     gain.gain.value = parseFloat(e.target.value)
-    console.log(`gaing: ${parseFloat(e.target.value)}`)
+    console.log(`gain: ${parseFloat(e.target.value)}`)
 })
-
-
-oscillator.connect(gain).connect(audioContext.destination)
